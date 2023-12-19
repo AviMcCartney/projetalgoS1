@@ -12,6 +12,6 @@
 
 int main(int argc, char const *argv[])
 {
-    printf("Hello World");
+    read_sortie("../Images/darks/darks_00012.fit");
     return 0;
 }
