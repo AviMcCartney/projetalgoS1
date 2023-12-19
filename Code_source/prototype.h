@@ -10,9 +10,11 @@
  */
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 #include <stdio.h>
 
-void read_sortie(const char *chemin_fichier);
+struct header read_sortie(char *chemin_fichier);
+void conversion_csv(char *chemin_fichier, char *chemin_fichier_csv);
 
 struct header
 {

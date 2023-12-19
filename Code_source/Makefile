@@ -3,7 +3,7 @@ OBJECTS = main.o fonctions_operations.o
 CC = gcc
 
 all: $(OBJECTS)
-	 $(CC) $(OBJECTS) -o $(BIN)
+	 $(CC) $(OBJECTS) -o $(BIN) -lm
 
 main.o : main.c prototype.h
 	 $(CC) -c main.c
