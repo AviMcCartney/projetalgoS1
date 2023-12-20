@@ -11,6 +11,7 @@
 #include "prototype.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <math.h>
 
 /**
@@ -66,8 +67,10 @@ struct header read_sortie(char *chemin_fichier)
             sscanf(line, "NAXIS2  = %d", &entete.NAXIS2);
         if (strncmp(line, "NAXIS3  = ", 10) == 0)
             sscanf(line, "NAXIS3  = %d", &entete.NAXIS3);
-        if (strncmp(line, "EXTEND  = ", 10) == 0)
-            sscanf(line, "EXTEND  = %s", entete.EXTEND);
+        if (strncmp(line, "BZERO   = ", 10) == 0)
+            sscanf(line, "BZERO   = %d", &entete.BZERO);
+        if (strncmp(line, "BSCALE  = ", 10) == 0)
+            sscanf(line, "BSCALE  = %d", &entete.BSCALE);
         if (strncmp(line, "BITPIX  = ", 10) == 0)
             sscanf(line, "BITPIX  = %d", &entete.BITPIX);
         if (strncmp(line, "DATE    = ", 10) == 0)
@@ -92,17 +95,24 @@ struct header read_sortie(char *chemin_fichier)
     }
     printf("\n*****************************************");
     printf("\nLes données importantes du header à retenir sont :");
-    printf("\nNAXIS = %d, NAXIS1 = %d, NAXIS2= %d, NAXIS3= %d, EXTEND = %s, BITPIX = %d, DATE= %s", entete.NAXIS, entete.NAXIS1, entete.NAXIS2, entete.NAXIS3, entete.EXTEND, entete.BITPIX, entete.DATE);
+    printf("\nBITPIX = %d, NAXIS = %d, NAXIS1 = %d, NAXIS2= %d, NAXIS3= %d, BZERO = %d, BSCALE = %d,  DATE= %s", entete.BITPIX, entete.NAXIS, entete.NAXIS1, entete.NAXIS2, entete.NAXIS3, entete.BZERO, entete.BSCALE, entete.DATE);
     // Ferme le fichier
     fclose(fichier);
     printf("\n");
     return entete;
 }
 
+/**
+ * @brief Permet de renseigner les données d'un fichier FIT dans un CSV
+ *
+ * @param chemin_fichier
+ * @param chemin_fichier_csv
+ */
 void conversion_csv(char *chemin_fichier, char *chemin_fichier_csv)
 {
     FILE *fichier = fopen(chemin_fichier, "rb");
     FILE *fichier_csv = fopen(chemin_fichier_csv, "w");
+    int cpt;
 
     if (fichier == NULL || fichier_csv == NULL)
     {
@@ -111,27 +121,92 @@ void conversion_csv(char *chemin_fichier, char *chemin_fichier_csv)
     }
 
     struct header entete2 = read_sortie(chemin_fichier);
+
+    // Calcul du BITPIX
     int base = 2;
     int exposant = entete2.BITPIX;
-    int pixel = pow(base, exposant);
-    printf("\n%d", pixel);
+    int pixel = pow(base, exposant) - 1;
+    printf("\n Un pixel à comme valeur maximale : %d\n", pixel);
+
+    // Positionne le pointeur à la suite du header pour ne pas le retraiter
     fseek(fichier, 2880, SEEK_SET);
 
-    // for (int i = 0; i < entete2.NAXIS2; i++)
-    // {
-    //     for (int j = 0; j < entete2.NAXIS1; j++)
-    //     {
-    //     }
-    //     else
-    //     {
-    //         perror("Erreur lors de la lecture des données de l'image");
-    //         fclose(fichier);
-    //         fclose(fichier_csv);
-    //         exit(EXIT_FAILURE);
-    //     }
-    // }
-    // fprintf(fichier_csv, "\n");
+    // Traitement en fonction de BITPIX
+    if (entete2.BITPIX == 16)
+    {
+        uint16_t pixel;
+        for (int i = 0; i < entete2.NAXIS1; i++)
+        {
+            for (int j = 0; j < entete2.NAXIS2; j++)
+            {
+                if (fread(&pixel, sizeof(pixel), 1, fichier) == 1)
+                {
+                    pixel = (pixel >> 8) | (pixel << 8);
+                    fprintf(fichier_csv, "%hd", entete2.BZERO + entete2.BSCALE * pixel);
+                    if (j < entete2.NAXIS2 - 1)
+                    {
+                        fprintf(fichier_csv, ";");
+                    }
+                }
+                if (cpt == entete2.NAXIS1 + 1)
+                {
+                    fprintf(fichier_csv, "\n");
+                    cpt = 0;
+                }
+                cpt++;
+            }
+        }
 
-    // fclose(fichier);
-    // fclose(fichier_csv);
+        fprintf(fichier_csv, "\n");
+
+        fclose(fichier);
+        fclose(fichier_csv);
+    }
 }
+
+// void somme_image(const char *chemin_fichier1, const char *chemin_fichier2, const char *chemin_fichier_sortie)
+// {
+//     FILE *fichier1 = fopen(chemin_fichier1, "rb");
+//     FILE *fichier2 = fopen(chemin_fichier2, "rb");
+//     FILE *fichier_sortie = fopen(chemin_fichier_sortie, "wb");
+
+//     if (fichier1 == NULL || fichier2 == NULL || fichier_sortie == NULL)
+//     {
+//         perror("Erreur lors de l'ouverture des fichiers");
+//         exit(EXIT_FAILURE);
+//     }
+
+//     struct header entete1 = read_sortie(chemin_fichier1);
+//     struct header entete2 = read_sortie(chemin_fichier2);
+
+//     // Vérifier que les dimensions des images sont les mêmes
+//     if (entete1.NAXIS1 != entete2.NAXIS1 || entete1.NAXIS2 != entete2.NAXIS2)
+//     {
+//         fprintf(stderr, "Les dimensions des images ne correspondent pas.\n");
+//         fclose(fichier1);
+//         fclose(fichier2);
+//         fclose(fichier_sortie);
+//         exit(EXIT_FAILURE);
+//     }
+
+//     fseek(fichier1, 2880, SEEK_SET); // Ignorer l'entête du premier fichier FITS
+//     fseek(fichier2, 2880, SEEK_SET); // Ignorer l'entête du deuxième fichier FITS
+
+//     uint16_t pixel1, pixel2, pixel_somme;
+//     for (int i = 0; i < entete1.NAXIS2; i++)
+//     {
+//         for (int j = 0; j < entete1.NAXIS1; j++)
+//         {
+//             fread(&pixel1, sizeof(uint16_t), 1, fichier1);
+//             fread(&pixel2, sizeof(uint16_t), 1, fichier2);
+
+//             pixel_somme = pixel1 + pixel2; // Addition simple des pixels
+
+//             fwrite(&pixel_somme, sizeof(uint16_t), 1, fichier_sortie);
+//         }
+//     }
+
+//     fclose(fichier1);
+//     fclose(fichier2);
+//     fclose(fichier_sortie);
+// }
