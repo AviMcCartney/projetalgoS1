@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 struct header read_sortie(char *chemin_fichier);
-void conversion_csv(char *chemin_fichier, char *chemin_fichier_csv);
+struct header conversion_csv(char *chemin_fichier, char *chemin_fichier_csv);
 void somme_image(const char *chemin_fichier1, const char *chemin_fichier2, const char *chemin_fichier_sortie);
 
 struct header
@@ -39,4 +39,5 @@ struct header
     int XBAYROFF;
     int YBAYROFF;
     char PROGRAM[69];
+    int **DATA;
 };

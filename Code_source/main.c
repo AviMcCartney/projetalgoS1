@@ -17,6 +17,9 @@ int main(int argc, char const *argv[])
     //  read_sortie("../Images/darks/darks_00012.fit");
 
     // Converti l'image passé en paramètre en CSV
-    conversion_csv("../Images/lights/r_lights_00001.fit", "test.csv");
+    // conversion_csv("../Images/lights/r_lights_00001.fit", "test.csv");
+
+    somme_image("../Images/lights/r_lights_00001.fit", "../Images/lights/r_lights_00002.fit", "test.fit");
+
     return 0;
 }
