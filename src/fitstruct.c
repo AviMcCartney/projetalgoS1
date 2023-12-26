@@ -2,6 +2,12 @@
 #include "lecture.h"
 #include "header.h"
 
+/**
+ * @brief On passe un fichier en paramètre et on construit sa structure FitStruct. Dans cette structure on stockera les données de l'image et son header. Cette structure nous permettra de faire les opérations sur les images et l'écriture du CSV.
+ *
+ * @param fichier
+ * @return struct FitStruct
+ */
 struct FitStruct construct_fitstruct(FILE *fichier)
 {
     FitStruct fit_fichier;

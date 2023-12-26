@@ -49,6 +49,14 @@ FILE *ouvrir_fichier(char *chemin_fichier, char *option)
     return mon_fichier;
 }
 
+/**
+ * @brief Lit les données brutes de l'images en format big endian
+ *
+ * @param fichier
+ * @param naxis1
+ * @param naxis2
+ * @return uint16_t*
+ */
 uint16_t *lire_donnees_image(FILE *fichier, int naxis1, int naxis2)
 {
     fseek(fichier, 2880, SEEK_SET);

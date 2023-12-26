@@ -17,7 +17,7 @@
 
 int main()
 {
-    FILE *mon_fichier = ouvrir_fichier("Images/r_lights_00004.fit", "rb");
+    FILE *mon_fichier = ouvrir_fichier("Images//lights/r_lights_00001.fit", "rb");
 
     // construct_header(mon_fichier);
 

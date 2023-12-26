@@ -2,6 +2,12 @@
 #include "header.h"
 #include "lecture.h"
 
+/**
+ * @brief Écrit les valeurs réelles d'une image dans un fichier CSV valeur_réelle = BZERO + BSCALE × valeur_enregistrée
+ *
+ * @param fitStruct
+ * @param nom_fichier_csv
+ */
 void ecrire_pixels_csv(FitStruct fitStruct, char *nom_fichier_csv)
 {
     FILE *fichier_csv = ouvrir_fichier(nom_fichier_csv, "w");
