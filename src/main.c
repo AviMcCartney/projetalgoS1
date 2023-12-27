@@ -18,6 +18,7 @@
 int main()
 {
     FILE *mon_fichier = ouvrir_fichier("Images//lights/r_lights_00001.fit", "rb");
+    FILE *mon_fichier2 = ouvrir_fichier("Images//lights/r_lights_00002.fit", "rb");
 
     // construct_header(mon_fichier);
 
@@ -26,7 +27,7 @@ int main()
     // afficher_tous_les_pixels(maFitStruct);
 
     // free(maFitStruct.data);
-    ecrire_pixels_csv(maFitStruct, "test.csv");
+    // ecrire_pixels_csv(maFitStruct, "test.csv");
     fclose(mon_fichier);
 
     return 0;
