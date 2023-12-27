@@ -24,10 +24,10 @@ int main()
     // construct_header(mon_fichier);
 
     FitStruct maFitStruct = construct_fitstruct(mon_fichier);
-    // FitStruct maFitStruct2 = construct_fitstruct(mon_fichier2);
-    // FitStruct resultat_somme;
+    FitStruct maFitStruct2 = construct_fitstruct(mon_fichier2);
+    FitStruct resultat_somme;
 
-    // FitStruct fitStructs[] = {maFitStruct, maFitStruct2};
+    FitStruct fitStructs[] = {maFitStruct, maFitStruct2};
 
     // Tester si 2 headers de 2 images différentes sont compatibles
     // if (headers_compatible(fitStructs, 2))
@@ -39,11 +39,16 @@ int main()
     //     printf("Les headers ne sont pas compatibles.\n");
     // }
 
-    // resultat_somme = somme_image(fitStructs, 2);
-    // ecrire_pixels_csv(resultat_somme, "somme.csv");
+    resultat_somme = somme_image(fitStructs, 2);
+    printf("********FITSTRUCT1********");
+    afficher_premieres_valeurs(maFitStruct, 10);
+    printf("********FITSTRUCT2********");
+    afficher_premieres_valeurs(maFitStruct2, 10);
+    printf("*******FITSTRUCTSOMME*********");
+    afficher_premieres_valeurs(resultat_somme, 10);
 
     // Ecrit les pixels calculés dans un CSV
-    ecrire_pixels_csv(maFitStruct, "test.csv");
+    // ecrire_pixels_csv(maFitStruct, "test.csv");
 
     fclose(mon_fichier);
     fclose(mon_fichier2);
