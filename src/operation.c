@@ -21,3 +21,5 @@ int headers_compatible(FitStruct *images, int nombre_images)
     }
     return 1;
 }
+
+FitStruct somme_image(FitStruct images, int nombre_images) {}

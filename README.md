@@ -3,7 +3,7 @@
 ## Projet d'algorithmique - Utilitaire de traitement de photo astronomiques
 
 1. Cloner le dépôt (ou si c'est déjà fait mettre à jour votre branche)
-2. Lancer la commande ` make clean && make run` dans votre terminal en étant à la racine du projet
+2. Lancer la commande `make clean && make run` dans votre terminal en étant à la racine du projet
 
 ### La différence avec ce qu'on faisait avant
 

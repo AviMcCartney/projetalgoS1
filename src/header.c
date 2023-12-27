@@ -60,8 +60,8 @@ void process_header(Header *mon_header, char packet80[LONGUEUR_LIGNES_HEADER])
     {
         // printf("CLE: %s\n", cle);
         // printf("VALEUR: %s\n", valeur);
-        if (!cle_valide(cle))
-            return;
+        // if (!cle_valide(cle))
+        //     return;
         if (!strncmp(cle, "NAXIS", 6))
         {
             mon_header->NAXIS = atoi(valeur);
