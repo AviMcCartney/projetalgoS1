@@ -10,7 +10,7 @@
 
 typedef struct FitStruct
 {
-    uint16_t *data;
+    int16_t *data;
     Header header_fichier;
 } FitStruct;
 

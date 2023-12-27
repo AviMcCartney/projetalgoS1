@@ -17,6 +17,6 @@
 char *lire_donnees_header(FILE *fichier);
 
 FILE *ouvrir_fichier(char *chemin_fichier, char *option);
-uint16_t *lire_donnees_image(FILE *fichier, int naxis1, int naxis2);
+int16_t *lire_donnees_image(FILE *fichier, int naxis1, int naxis2);
 
 #endif // LECTURE_H

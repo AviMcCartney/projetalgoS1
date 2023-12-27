@@ -57,11 +57,11 @@ FILE *ouvrir_fichier(char *chemin_fichier, char *option)
  * @param naxis2
  * @return uint16_t*
  */
-uint16_t *lire_donnees_image(FILE *fichier, int naxis1, int naxis2)
+int16_t *lire_donnees_image(FILE *fichier, int naxis1, int naxis2)
 {
     fseek(fichier, 2880, SEEK_SET);
     size_t total_pixels = naxis1 * naxis2 * 2;
-    uint16_t *buffer = (uint16_t *)allouer_malloc(total_pixels * sizeof(uint16_t));
+    int16_t *buffer = (int16_t *)allouer_malloc(total_pixels * sizeof(int16_t));
 
     uint16_t pixel;
     for (size_t i = 0; i < total_pixels; i++)

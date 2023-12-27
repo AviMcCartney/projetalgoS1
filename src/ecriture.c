@@ -12,7 +12,7 @@ void ecrire_pixels_csv(FitStruct fitStruct, char *nom_fichier_csv)
 {
     FILE *fichier_csv = ouvrir_fichier(nom_fichier_csv, "w");
 
-    uint16_t *pixels = fitStruct.data;
+    int16_t *pixels = fitStruct.data;
     for (int i = 0; i < fitStruct.header_fichier.NAXIS2; i++)
     {
         for (int j = 0; j < fitStruct.header_fichier.NAXIS1; j++)
