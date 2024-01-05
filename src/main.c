@@ -18,18 +18,22 @@
 
 int main()
 {
+    //************** DECLARATION ET OUVERTURE DES FICHIERS **************
     FILE *mon_fichier = ouvrir_fichier("Images//lights/r_lights_00001.fit", "rb");
     FILE *mon_fichier2 = ouvrir_fichier("Images//lights/r_lights_00002.fit", "rb");
 
+    //************** CONSTRUCTION DES HEADERS DES FICHIERS **************
     // construct_header(mon_fichier);
 
+    //************** CONSTRUCTION DES FitStruct DES FICHIERS **************
     FitStruct maFitStruct = construct_fitstruct(mon_fichier);
     FitStruct maFitStruct2 = construct_fitstruct(mon_fichier2);
-    FitStruct resultat_somme;
+    FitStruct resultat_somme, resultat_moyenne, resultat_division, resultat_soustraction;
 
+    //************** DECLARATION LISTE DE FITSTRUCT **************
     FitStruct fitStructs[] = {maFitStruct, maFitStruct2};
 
-    // Tester si 2 headers de 2 images différentes sont compatibles
+    //************** TEST HEADERS IDENTIQUE DE 2 FICHIERS **************
     // if (headers_compatible(fitStructs, 2))
     // {
     //     printf("Les headers sont compatibles.\n");
@@ -39,16 +43,29 @@ int main()
     //     printf("Les headers ne sont pas compatibles.\n");
     // }
 
+    //************** TEST ELABORATION .CSV **************
+    // ecrire_pixels_csv(maFitStruct, "test.csv");
+
+    //************** TEST OPERATIONS **************
+    // Tester la somme
     resultat_somme = somme_image(fitStructs, 2);
-    printf("********FITSTRUCT1********");
-    afficher_premieres_valeurs(maFitStruct, 10);
-    printf("********FITSTRUCT2********");
-    afficher_premieres_valeurs(maFitStruct2, 10);
-    printf("*******FITSTRUCTSOMME*********");
+    printf("\n**********SOMME************\n");
     afficher_premieres_valeurs(resultat_somme, 10);
 
-    // Ecrit les pixels calculés dans un CSV
-    // ecrire_pixels_csv(maFitStruct, "test.csv");
+    // Tester la moyenne
+    resultat_moyenne = moyenne_image(fitStructs, 2);
+    printf("\n**********MOYENNE************\n");
+    afficher_premieres_valeurs(resultat_moyenne, 10);
+
+    // Tester la division
+    resultat_division = diviser_image(maFitStruct, maFitStruct2);
+    printf("\n**********DIVISON************\n");
+    afficher_premieres_valeurs(resultat_division, 10);
+
+    // Tester la soustraction
+    resultat_soustraction = soustraire_image(maFitStruct, maFitStruct2);
+    printf("\n**********SOUSTRACTION************\n");
+    afficher_premieres_valeurs(resultat_soustraction, 10);
 
     fclose(mon_fichier);
     fclose(mon_fichier2);
