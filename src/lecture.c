@@ -18,7 +18,7 @@
 /**
  * @brief Retourne les données du header du fichier
  *
- * @param fichier
+ * @param fichier Le chemin du fichier .fit pour lequel on veut lire les données du header
  * @return char*
  */
 char *lire_donnees_header(FILE *fichier)
@@ -52,9 +52,9 @@ FILE *ouvrir_fichier(char *chemin_fichier, char *option)
 /**
  * @brief Lit les données brutes de l'images en format big endian
  *
- * @param fichier
- * @param naxis1
- * @param naxis2
+ * @param fichier Le chemin du fichier .fit pour lequel on veut lire les données
+ * @param naxis1  La valeur NAXIS1 de ce fichier
+ * @param naxis2  La valeur NAXIS2 de ce fichier
  * @return uint16_t*
  */
 int16_t *lire_donnees_image(FILE *fichier, int naxis1, int naxis2)

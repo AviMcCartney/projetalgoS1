@@ -111,9 +111,9 @@ void process_header(Header *mon_header, char packet80[LONGUEUR_LIGNES_HEADER])
 }
 
 /**
- * @brief Construit la structure du Header associée au fichier passé en paramètre.
+ * @brief Construit la structure du Header associée au fichier passé en paramètre. Répond a l'éxigence **PRIM_30**
  *
- * @param mon_fichier
+ * @param mon_fichier Le chemin du fichier .fit pour lequel on veut obtenir sa structure Header.
  * @return struct Header
  */
 struct Header construct_header(FILE *mon_fichier)

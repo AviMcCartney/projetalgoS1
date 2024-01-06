@@ -24,7 +24,8 @@ int headers_compatible(FitStruct *images, int nombre_images)
 }
 
 /**
- * @brief Renvoie la somme des images en fonction d'une liste d'image passés en paramètre
+ * @brief Renvoie la somme des images en fonction d'une liste d'image passés en paramètre. Répond à l'éxigence **PRIM_50**.
+ *
  *
  * @param images
  * @param nombre_images
@@ -80,7 +81,7 @@ void afficher_premieres_valeurs(FitStruct image, int nombre_valeurs)
 }
 
 /**
- * @brief Renvoie la moyenne des images en fonction d'une liste d'image passés en paramètre
+ * @brief Renvoie la moyenne des images en fonction d'une liste d'image passés en paramètre. Répond à l'éxigence **PRIM_60**.
  *
  * @param images
  * @param nombre_images
@@ -124,7 +125,7 @@ FitStruct moyenne_image(FitStruct *images, int nombre_images)
 }
 
 /**
- * @brief Renvoie la division de 2 images passés en paramètre
+ * @brief Renvoie la division de 2 images passés en paramètre. Répond à l'éxigence **PRIM_80**.
  *
  * @param images1
  * @param images2
@@ -172,7 +173,7 @@ FitStruct diviser_image(FitStruct images1, FitStruct images2)
 }
 
 /**
- * @brief Renvoie la différence de 2 images passés en paramètre
+ * @brief Renvoie la différence de 2 images passés en paramètre. Répond à l'éxigence **PRIM_70**.
  *
  * @param images1
  * @param images2

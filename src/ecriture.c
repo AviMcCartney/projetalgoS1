@@ -13,10 +13,10 @@
 #include "lecture.h"
 
 /**
- * @brief Écrit les valeurs réelles d'une image dans un fichier CSV valeur_réelle = BZERO + BSCALE × valeur_enregistrée
+ * @brief Écrit les valeurs réelles d'une image dans un fichier CSV valeur_réelle = BZERO + BSCALE × valeur_enregistrée. Répond à l'éxigence **PRIM_40**
  *
- * @param fitStruct
- * @param nom_fichier_csv
+ * @param fitStruct Structure fitStruct d'une image .fit
+ * @param nom_fichier_csv Le chemin du fichier .csv dans lequel on va écrire
  */
 void ecrire_pixels_csv(FitStruct fitStruct, char *nom_fichier_csv)
 {
@@ -41,8 +41,8 @@ void ecrire_pixels_csv(FitStruct fitStruct, char *nom_fichier_csv)
 /**
  * @brief Convertir une FitStruct en fichier .fit
  *
- * @param fitStruct
- * @param filename
+ * @param fitStruct Structure fitStruct d'une image .fit
+ * @param filenameLe Le chemin du fichier .fit dans lequel on va écrire
  */
 void ecrire_fit_file(FitStruct fitStruct, char *filename)
 {

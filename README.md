@@ -1,23 +1,34 @@
 # Projet d'algorithmique - CATALA Alexandre - DI GIOVANNI Celian - SOUBRY Sophie
 
-## Projet d'algorithmique - Utilitaire de traitement de photo astronomiques
+## Utilitaire de traitement de photo astronomiques
 
-1. Cloner le dépôt (ou si c'est déjà fait mettre à jour votre branche)
-2. Lancer la commande `make clean && make run` dans votre terminal en étant à la racine du projet
+## Contenu du projet
 
-### La différence avec ce qu'on faisait avant
+1. **src** : Ce répertoire contient le code source de l'application.
 
-Le problème dans notre ancien code, c'était que dans une seule fonction, on faisait tout en même temps :
-
-- Ouvrir un fichier
-- Faire les malloc
-- Lire les données
-- Faire la conversion Big / Little endian
-- Écrire les données
+- `main.c` : Fichier principal contenant le menu intéractif.
+- `operation.c` : Fichier contenant les opérations à effectuer sur les fichier .fit.
 - ...
 
-Pas hyper opti quoi, du coup maintenant le but c'est de séparer en plusieurs fichier tous nos besoins.
+2. **include** : Ce répertoire contient les fichiers d'en-tête.
 
-Si on veut écrire des données, on fera la fonction dans ecriture.c, si on veut ecrire des données comme dans le csv on fera une fonction dans ecriture.c. Chaque .c à son .h avec les prototypes qu'il faut.
+- `fitstruct.h` : Définition de la structure `FitStruct`.
+- `header.h` : Définition de la structure `Header`.
+- ...
 
-Pour faire les opérations, on fera un nouveau .c comme operations.c dans le dossier /src avec les fonctions et on n'oubliera pas de faire son .h dans /include par la suite. Si dans ce fichier on a besoin d'autre fonctions comme par exemple celle qui permet de construire une FitStruct on aura juste à `#include "fitstruct.h` en début de fichier. On include **que** les .h jamais les .c.
+3. **Images** : Ce répertoire contient les images FITS utilisées pour les tests.
+
+4. **Documentation** : Ce répertoire contient la documentation du projet.
+
+5. **build** : Ce répertoire contient les fichiers générés lors de la compilation.
+
+## Compilation et Éxécution
+
+1. Cloner le dépôt
+2. Lancer la commande `make clean && make run` dans votre terminal en étant à la racine du projet
+
+## Exemple d'Utilisation
+
+1. Sélectionnez l'option dans le menu interactif.
+2. Suivez les instructions pour fournir les fichiers FITS nécessaires.
+3. Obtenez les résultats dans votre terminal.
