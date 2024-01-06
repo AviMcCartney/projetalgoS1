@@ -1,3 +1,13 @@
+/**
+ * @file operation.h
+ * @author Alexandre, Célian, Sophie
+ * @brief Fichier operation.h contenant l'ensemble des prototypes et des déclarations pour les procédures d'opérations.
+ * @version 0.1
+ * @date 2024-01-06
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #ifndef OPERATION_H
 #define OPERATION_H
 #include "fitstruct.h"

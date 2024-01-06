@@ -1,3 +1,13 @@
+/**
+ * @file memoire.c
+ * @author Alexandre, Célian, Sophie
+ * @brief Fichier memoire.c contenant l'ensemble des fonctions pour les opérations concernant la mémoire
+ * @version 0.1
+ * @date 2024-01-06
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #include "memoire.h"
 #include <stdlib.h>
 

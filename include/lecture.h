@@ -1,7 +1,7 @@
 /**
  * @file lecture.h
  * @author Alexandre, Célian, Sophie
- * @brief Fichier lecture.h contenant l'ensemble des prototypes et des déclarations pour les lecture de fichier et de header
+ * @brief Fichier lecture.h contenant l'ensemble des prototypes et des déclarations pour les lecture de fichier et de header.
  * @version 0.1
  * @date 2023-12-24
  *

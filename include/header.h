@@ -21,6 +21,10 @@
 #define OCTETS_HEADER 2880
 #define NB_CLES_VALIDES 7
 
+/**
+ * @brief Structure du Header d'un fichier .fit. Cette structure nous permettra de stocker les informations importantes d'un header.
+ *
+ */
 typedef struct Header
 {
     char SIMPLE;

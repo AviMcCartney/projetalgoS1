@@ -1,5 +1,19 @@
+/**
+ * @file menu.c
+ * @author Alexandre, Célian, Sophie
+ * @brief Fichier menu.c contenant la fonction void menu() - Répond à l'éxigence optionnelle **OPT_30**
+ * @version 0.1
+ * @date 2024-01-06
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #include "menu.h"
 
+/**
+ * @brief Permet d'effectuer une suite d'opération choisi par l'utilisateur sur 2 images présélectionnées
+ *
+ */
 void menu()
 {
     FILE *mon_fichier1 = ouvrir_fichier("Images//lights/r_lights_00001.fit", "rb");

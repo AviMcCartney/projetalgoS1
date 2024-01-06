@@ -65,6 +65,12 @@ FitStruct somme_image(FitStruct *images, int nombre_images)
     return resultat;
 }
 
+/**
+ * @brief Affiche le nombre de valeurs d'une FitStruct, permet de vérifier les calculs des opérations
+ *
+ * @param image
+ * @param nombre_valeurs
+ */
 void afficher_premieres_valeurs(FitStruct image, int nombre_valeurs)
 {
     for (int i = 0; i < nombre_valeurs; i++)
@@ -73,6 +79,13 @@ void afficher_premieres_valeurs(FitStruct image, int nombre_valeurs)
     }
 }
 
+/**
+ * @brief Renvoie la moyenne des images en fonction d'une liste d'image passés en paramètre
+ *
+ * @param images
+ * @param nombre_images
+ * @return FitStruct
+ */
 FitStruct moyenne_image(FitStruct *images, int nombre_images)
 {
     // Vérifier la compatibilité des headers
@@ -110,6 +123,13 @@ FitStruct moyenne_image(FitStruct *images, int nombre_images)
     return resultat;
 }
 
+/**
+ * @brief Renvoie la division de 2 images passés en paramètre
+ *
+ * @param images1
+ * @param images2
+ * @return FitStruct
+ */
 FitStruct diviser_image(FitStruct images1, FitStruct images2)
 {
     // Vérifier la compatibilité des headers
@@ -151,6 +171,13 @@ FitStruct diviser_image(FitStruct images1, FitStruct images2)
     return resultat;
 }
 
+/**
+ * @brief Renvoie la différence de 2 images passés en paramètre
+ *
+ * @param images1
+ * @param images2
+ * @return FitStruct
+ */
 FitStruct soustraire_image(FitStruct images1, FitStruct images2)
 {
     // Vérifier la compatibilité des headers

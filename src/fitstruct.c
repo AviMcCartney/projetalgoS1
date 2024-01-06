@@ -1,3 +1,13 @@
+/**
+ * @file fitstruct.c
+ * @author Alexandre, Célian, Sophie
+ * @brief Fichier fitstruct.c contenant l'ensemble des fonctions pour traiter les fitstruct
+ * @version 0.1
+ * @date 2024-01-06
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #include "fitstruct.h"
 #include "lecture.h"
 #include "header.h"

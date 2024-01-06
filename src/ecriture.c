@@ -1,3 +1,13 @@
+/**
+ * @file ecriture.c
+ * @author Alexandre, Célian, Sophie
+ * @brief Fichier ecriture.c contenant l'ensemble des fonctions pour la lecture de fichier / données.
+ * @version 0.1
+ * @date 2024-01-06
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #include "ecriture.h"
 #include "header.h"
 #include "lecture.h"
@@ -28,6 +38,12 @@ void ecrire_pixels_csv(FitStruct fitStruct, char *nom_fichier_csv)
     fclose(fichier_csv);
 }
 
+/**
+ * @brief Convertir une FitStruct en fichier .fit
+ *
+ * @param fitStruct
+ * @param filename
+ */
 void ecrire_fit_file(FitStruct fitStruct, char *filename)
 {
     FILE *output_file = fopen(filename, "wb");
