@@ -1,7 +1,7 @@
 /**
  * @file menu.h
  * @author Alexandre, Célian, Sophie
- * @brief Fichier menu.h contenant l'ensemble des prototypes et des déclarations pour la procédure menu
+ * @brief Fichier menu.h contenant l'ensemble des prototypes et des déclarations pour la procédure menu.
  * @version 0.1
  * @date 2024-01-06
  *
