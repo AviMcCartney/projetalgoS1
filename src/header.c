@@ -97,6 +97,16 @@ void process_header(Header *mon_header, char packet80[LONGUEUR_LIGNES_HEADER])
             mon_header->BITPIX = atoi(valeur);
             return;
         }
+        if (!strncmp(cle, "SIMPLE", 6))
+        {
+            mon_header->SIMPLE = *cle;
+            return;
+        }
+        if (!strncmp(cle, "SIMPLE", 6))
+        {
+            mon_header->SIMPLE = *cle;
+            return;
+        }
     }
 }
 
@@ -122,7 +132,7 @@ struct Header construct_header(FILE *mon_fichier)
 
     printf("\n*****************************************");
     printf("\nLes données importantes du header à retenir sont :");
-    printf("\nBITPIX = %d, NAXIS = %d, NAXIS1 = %d, NAXIS2= %d, NAXIS3= %d, BZERO = %d, BSCALE = %d\n", mon_header.BITPIX, mon_header.NAXIS, mon_header.NAXIS1, mon_header.NAXIS2, mon_header.NAXIS3, mon_header.BZERO, mon_header.BSCALE);
+    printf("\nBITPIX = %d, NAXIS = %d, NAXIS1 = %d, NAXIS2= %d, NAXIS3= %d, BZERO = %d, BSCALE = %d,SIMPLE = %c\n", mon_header.BITPIX, mon_header.NAXIS, mon_header.NAXIS1, mon_header.NAXIS2, mon_header.NAXIS3, mon_header.BZERO, mon_header.BSCALE, mon_header.SIMPLE);
 
     free(data);
     return mon_header;

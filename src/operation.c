@@ -58,7 +58,7 @@ FitStruct somme_image(FitStruct *images, int nombre_images)
             {
                 somme += images[k].data[i * naxis1 + j];
             }
-            resultat.data[i * naxis1 + j] = (somme > INT16_MAX) ? INT16_MAX : somme; // Gérer les débordements
+            resultat.data[i * naxis1 + j] = (somme > INT16_MAX) ? INT16_MAX : ((somme < INT16_MIN) ? INT16_MIN : somme);
         }
     }
 

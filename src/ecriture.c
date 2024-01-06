@@ -27,3 +27,16 @@ void ecrire_pixels_csv(FitStruct fitStruct, char *nom_fichier_csv)
 
     fclose(fichier_csv);
 }
+
+void ecrire_fit_file(FitStruct fitStruct, char *filename)
+{
+    FILE *output_file = fopen(filename, "wb");
+
+    // Écrire le header dans le fichier
+    fwrite(&fitStruct.header_fichier, sizeof(Header), 1, output_file);
+
+    // Écrire les données dans le fichier
+    fwrite(fitStruct.data, sizeof(int16_t), fitStruct.header_fichier.NAXIS1 * fitStruct.header_fichier.NAXIS2, output_file);
+
+    fclose(output_file);
+}
