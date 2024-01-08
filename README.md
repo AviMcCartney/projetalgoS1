@@ -1,4 +1,4 @@
-# Projet d'algorithmique - CATALA Alexandre - DI GIOVANNI Celian - SOUBRY Sophie
+# Projet d'algorithmique - Compte rendu - CATALA Alexandre - DI GIOVANNI Celian - SOUBRY Sophie
 
 ## Utilitaire de traitement de photo astronomiques
 
@@ -56,3 +56,6 @@ Nous pouvions donc suivre les avancements de chacun, et avancer en autonomie.
   - du calcul et de l'écriture des données dans le .csv
 
 - Suite à ces problèmes, nous avons décidés de repartir du début pour repartir sur une base plus adaptés. Nous avons essayé de séparer le plus possible le code en plusieurs fonctions pour éviter les erreurs et les répétitions.
+
+  - Nous avons dû revoir notre façon de manipuler les données FITS, de les stocker en mémoire et de les traiter.
+  - Malgré ces difficultés, nous avons réussi à implémenter toutes les fonctionnalités demandées et à respecter les normes de codage.
