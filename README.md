@@ -32,3 +32,27 @@
 1. Sélectionnez l'option dans le menu interactif.
 2. Suivez les instructions pour fournir les fichiers FITS nécessaires.
 3. Obtenez les résultats dans votre terminal.
+
+## Gestion du projet
+
+1. Création d'un Git Hub
+
+Pour nous organiser, nous avons mis en place un dépôt Git Hub dans lequel nous avons chacun notre « branche » afin de pouvoir travailler de manière indépendante sur le projet.
+
+Nous pouvions donc suivre les avancements de chacun, et avancer en autonomie.
+
+2. Déroulement du projet
+
+- Compréhension du sujet, des exigences, et du format FITS
+
+- Nous avions dans un premier temps commencé à travailler sur l'exigence **PRIM_30**, qui est de lire et afficher les entêtes de fichier .fit. Une fois la fonction terminée, on a pu passer à la fonction suivante qui permettait d'écrire dans un fichier .csv les valeurs calculées des fichier .fit (exigence **PRIM_40**).
+
+- **BLOQUAGE** : Nous nous sommes rendus compte au cours de notre projet que notre approche n'était pas optimale.  
+  En effet, nos fonctions géraient beaucoup de choses en même temps. Par exemple notre fonction qui convertissait les .fit en .csv s'occupaient à la fois :
+
+  - de l'ouverture des fichiers
+  - de la gestion de la mémoire
+  - de la conversion Little Endian / Big Endian
+  - du calcul et de l'écriture des données dans le .csv
+
+- Suite à ces problèmes, nous avons décidés de repartir du début pour repartir sur une base plus adaptés. Nous avons essayé de séparer le plus possible le code en plusieurs fonctions pour éviter les erreurs et les répétitions.
